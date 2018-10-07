@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Async - Await</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    async function getPostsAsync() {
+        const git = fetch('https://api.github.com/users/albino29')
+            .then(data => data.json());
+        const response = fetch('https://willianjusten.com.br/search.json')
+            .then(data => data.json());
+
+        const promises = await Promise.all([git, response])
+
+        console.log(promises)
+    }
+
+    getPostsAsync();
+</script>
+
+</html>
